@@ -92,24 +92,24 @@ struct Home: View {
                             .renderingMode(.original)
                             .padding()
                     }).padding(.horizontal, 10)
-                        .padding(.vertical,self.height > 800 ? 15 : 20)
+                        .padding(.vertical, 15)
                         .background(Color.white)
-                        .clipShape(CustomShape(corner: .bottomLeft, radii: self.height > 800 ? 30 : 35))
+                        .clipShape(CustomShape(corner: .bottomLeft, radii: 30))
                 }
             }
             .background(self.color == 0 ? Color.yellow : Color.orange)
             .clipShape(CustomShape(corner: .bottomLeft, radii: 55))
-            ScrollView(self.height > 800 ? .init() : .vertical , showsIndicators: false) {
+            ScrollView(.vertical , showsIndicators: false) {
                 VStack {
                     HStack {
                         Text("Melodi Lamp")
                             .font(.title)
                             .fontWeight(.bold)
-                        
+
                         Spacer()
-                        
+
                         Button(action: {
-                            
+
                         }, label: {
                             Image("heart")
                                 .renderingMode(.original)
@@ -117,28 +117,28 @@ struct Home: View {
                         })
                         .background(self.color == 0 ? Color.yellow : Color.orange)
                         .clipShape(Circle())
-                        
-                        
+
+
                     }
                     .padding(.horizontal, 35)
                     .padding(.top)
-                    
+
                     Text("The lampshape provides directional lighting above the dining the dining table and pleasant diffused light throught the room")
                         .multilineTextAlignment(.leading)
                         .foregroundColor(.gray)
                         .padding(.horizontal, 30)
                         .padding(.top)
-                    
+
                     Spacer(minLength: 0)
-                    
+
                     HStack(spacing: 10) {
                         Button(action: {
-                            
+
                         }, label: {
                             VStack {
                                 Image("mat1")
                                     .renderingMode(.original)
-                                
+
                                 Text("22 w")
                                     .fontWeight(.bold)
                                     .foregroundColor(.black)
@@ -147,14 +147,14 @@ struct Home: View {
                         })
                         .background(Color.black.opacity(0.06))
                         .cornerRadius(12)
-                        
+
                         Button(action: {
-                            
+
                         }, label: {
                             VStack {
                                 Image("mat2")
                                     .renderingMode(.original)
-                                
+
                                 Text("24 CM")
                                     .fontWeight(.bold)
                                     .foregroundColor(.black)
@@ -163,14 +163,14 @@ struct Home: View {
                         })
                         .background(Color.black.opacity(0.06))
                         .cornerRadius(12)
-                        
+
                         Button(action: {
-                            
+
                         }, label: {
                             VStack {
                                 Image("mat3")
                                     .renderingMode(.original)
-                                
+
                                 Text("26 CM")
                                     .fontWeight(.bold)
                                     .foregroundColor(.black)
@@ -179,14 +179,14 @@ struct Home: View {
                         })
                         .background(Color.black.opacity(0.06))
                         .cornerRadius(12)
-                        
+
                         Button(action: {
-                            
+
                         }, label: {
                             VStack {
                                 Image("mat4")
                                     .renderingMode(.original)
-                                
+
                                 Text("1.6 M")
                                     .fontWeight(.bold)
                                     .foregroundColor(.black)
@@ -198,38 +198,41 @@ struct Home: View {
                     }
                     .padding(.top, 20)
                     .padding(.bottom, 25)
-                    
+
                     Spacer(minLength: 0)
                 }
             }
             
             
-            HStack {
+            HStack{
+                
                 Text("$12.99")
                     .foregroundColor(.black)
                     .font(.title)
                     .fontWeight(.bold)
                     .padding(.leading, 35)
-                    .padding(.bottom, 25)
+                    .padding(.bottom,25)
                 
                 Spacer()
                 
                 Button(action: {
                     
-                }, label: {
+                }) {
+                    
                     Text("Add to Cart")
                         .foregroundColor(.black)
                         .padding(.vertical, 20)
                         .padding(.horizontal, 35)
-                })
+                }
                 .background(self.color == 0 ? Color.yellow : Color.orange)
-                clipShape(CustomShape(corner: .topLeft, radii: 55))
+                .clipShape(CustomShape(corner: .topLeft, radii: 55))
+                
             }
             
         }
         .edgesIgnoringSafeArea(.all)
         .statusBar(hidden: true)
-        .animation(.default, value: 1)
+        .animation(.default)
     }
 }
 
@@ -245,11 +248,7 @@ struct CustomShape : Shape {
     
 }
 
-class Host: UIHostingController<ContentView> {
-    override var prefersHomeIndicatorAutoHidden: Bool {
-        return true
-    }
-}
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
